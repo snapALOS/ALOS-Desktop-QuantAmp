@@ -1,0 +1,4 @@
+# ALOS Sandbox Manager — Python dependencies
+# No external dependencies required.
+# alos_chamber_manager.py uses only Python standard library modules:
+# json, os, resource, shutil, signal, subprocess, sys, tempfile, time, uuid, pathlib

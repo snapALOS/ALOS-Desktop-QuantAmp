@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alos-atlas"
+version = "0.2.0"
+description = "A live map of your codebase. Agents grounded in facts, not guesses."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+authors = [{ name = "ALOS" }]
+dependencies = [
+    "pydantic>=2.0",
+    "tree-sitter>=0.20.0",
+    "walkdir>=0.5",
+    "shlex",
+]
+
+[project.scripts]
+alos-atlas = "alos_atlas.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+alos_atlas = ["js_parser_bridge.js", "web/*"]

@@ -1,0 +1,19 @@
+[module]
+name = "chamber"
+display_name = "Chamber"
+version = "0.2.0"
+description = "ALOS Proprietary Sandbox. Secure, isolated execution for multi-stack logic."
+
+[capabilities]
+provides = ["isolated_execution", "sandbox", "python_runtime"]
+requires = []
+
+[nav]
+order = 40
+icon = "shield"
+route = "/chamber"
+
+[contracts]
+events = "contracts/events.ts"
+# commands = "contracts/commands.ts"  # Uncomment when created during fold-in
+python = "contracts/python.py"

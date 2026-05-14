@@ -1,0 +1,30 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .hexagon { fill: none; stroke: #00F0FF; stroke-width: 1.5; }
+      .orbit { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 0.5; }
+      .node { fill: currentColor; }
+    </style>
+  </defs>
+  
+  <!-- Central hexagon (swarm nucleus) -->
+  <polygon class="hexagon" points="32,8 40,18 40,30 32,40 24,30 24,18" />
+  
+  <!-- Negative space "A" in hexagon center -->
+  <path d="M28,22 L32,18 L36,22 H30 V26 H26 V22 H22 L28,22 Z" fill="#00F0FF"/>
+  
+  <!-- Orbit paths -->
+  <path class="orbit" d="M32,2 a30,30 0 1,0 0,60 a30,30 0 1,0 0,-60"/>
+  <path class="orbit" d="M32,2 a20,20 0 1,1 0,40 a20,20 0 1,1 0,-40" transform="rotate(30 32 32)"/>
+  <path class="orbit" d="M32,2 a25,25 0 1,0 0,50 a25,25 0 1,0 0,-50" transform="rotate(-20 32 32)"/>
+  
+  <!-- Orbiting nodes (swarm intelligence) -->
+  <circle class="node" cx="62" cy="32" r="3" fill="#FF3366"/>
+  <circle class="node" cx="32" cy="2" r="3" fill="#3AA8FF"/>
+  <circle class="node" cx="2" cy="32" r="3" fill="#55D187"/>
+  
+  <!-- Additional smaller nodes for detail -->
+  <circle class="node" cx="48" cy="18" r="2" fill="#FF3366" opacity="0.7"/>
+  <circle class="node" cx="16" cy="46" r="2" fill="#3AA8FF" opacity="0.7"/>
+  <circle class="node" cx="40" cy="48" r="2" fill="#55D187" opacity="0.7"/>
+</svg>

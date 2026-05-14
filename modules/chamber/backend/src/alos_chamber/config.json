@@ -1,0 +1,22 @@
+{
+  "stacks": {
+    "python": {
+      "description": "Isolated Python environment using venv",
+      "mount_source": "/home/quantamp/.openclaw/workspace/upgrade/alos_chamber/python/",
+      "runtime": "python3"
+    },
+    "node": {
+      "description": "Isolated Node.js environment with per-session working directory",
+      "mount_source": "/home/quantamp/.openclaw/workspace/upgrade/alos_chamber/node/",
+      "runtime": "node"
+    },
+    "android": {
+      "description": "Isolated React Native / Android environment using Node.js",
+      "mount_source": "/home/quantamp/.openclaw/workspace/upgrade/alos_chamber/android/",
+      "runtime": "node"
+    }
+  },
+  "container_prefix": "alos_chamber_session",
+  "max_concurrent_containers": 3,
+  "default_timeout_seconds": 300
+}

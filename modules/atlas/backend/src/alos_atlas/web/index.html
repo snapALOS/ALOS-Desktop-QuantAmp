@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AlosAtlas</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">RN</div>
+        <div>
+          <h1>AlosAtlas</h1>
+          <p>Local code intelligence and impact analysis</p>
+        </div>
+      </div>
+      <div class="repo-picker">
+        <label for="apiTokenInput">API token</label>
+        <input id="apiTokenInput" type="password" autocomplete="current-password" value="">
+        <button id="saveTokenBtn" type="button" class="secondary">Save Token</button>
+        <label for="repoSelect">Repository</label>
+        <select id="repoSelect"></select>
+        <button id="refreshReposBtn" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="band register-band">
+        <form id="registerForm" class="inline-form">
+          <label>
+            Name
+            <input id="repoNameInput" name="name" autocomplete="off" value="sample">
+          </label>
+          <label>
+            Absolute path
+            <input id="repoPathInput" name="path" autocomplete="off" value="/home/quantamp/.openclaw/workspace/upgrade/alos_atlas/examples/sample_repo">
+          </label>
+          <button type="submit">Register</button>
+          <button id="indexBtn" type="button">Index Selected</button>
+        </form>
+      </section>
+
+      <section class="status-grid" aria-live="polite">
+        <article>
+          <span>Freshness</span>
+          <strong id="freshnessValue">No repo</strong>
+        </article>
+        <article>
+          <span>Files</span>
+          <strong id="fileCountValue">0</strong>
+        </article>
+        <article>
+          <span>Nodes</span>
+          <strong id="nodeCountValue">0</strong>
+        </article>
+        <article>
+          <span>Edges</span>
+          <strong id="edgeCountValue">0</strong>
+        </article>
+      </section>
+
+      <nav class="tabs" aria-label="AlosAtlas tools">
+        <button class="tab active" type="button" data-panel="overviewPanel">Overview</button>
+        <button class="tab" type="button" data-panel="searchPanel">Search</button>
+        <button class="tab" type="button" data-panel="contextPanel">Context</button>
+        <button class="tab" type="button" data-panel="impactPanel">Impact</button>
+        <button class="tab" type="button" data-panel="scopePanel">Change Scope</button>
+        <button class="tab" type="button" data-panel="testsPanel">Tests</button>
+        <button class="tab" type="button" data-panel="profilePanel">Profile</button>
+        <button class="tab" type="button" data-panel="runtimePanel">Runtime</button>
+        <button class="tab" type="button" data-panel="storagePanel">Storage</button>
+        <button class="tab" type="button" data-panel="reportPanel">Report</button>
+      </nav>
+
+      <section id="overviewPanel" class="panel active">
+        <div class="toolbar">
+          <button id="loadOverviewBtn" type="button">Load Overview</button>
+          <button id="loadGraphMapBtn" type="button">Draw Graph Map</button>
+          <button id="loadFilesBtn" type="button">Load Files</button>
+          <button id="loadSymbolsBtn" type="button">Load Symbols</button>
+        </div>
+        <div class="columns">
+          <section>
+            <h2>Graph</h2>
+            <div id="graphMap" class="graph-map" aria-label="Repository graph map"></div>
+            <div id="graphOutput" class="result-list"></div>
+          </section>
+          <section>
+            <h2>Files And Symbols</h2>
+            <div id="inventoryOutput" class="result-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="searchPanel" class="panel">
+        <form id="searchForm" class="inline-form">
+          <label>
+            Concept
+            <input id="searchInput" value="auth">
+          </label>
+          <button type="submit">Search</button>
+        </form>
+        <div id="searchOutput" class="result-list"></div>
+      </section>
+
+      <section id="contextPanel" class="panel">
+        <form id="contextForm" class="inline-form">
+          <label>
+            Type
+            <select id="contextType">
+              <option value="file">File</option>
+              <option value="symbol">Symbol</option>
+              <option value="route">Route</option>
+            </select>
+          </label>
+          <label>
+            Value
+            <input id="contextInput" value="src/auth.py">
+          </label>
+          <button type="submit">Load Context</button>
+        </form>
+        <div id="contextOutput" class="result-list"></div>
+      </section>
+
+      <section id="impactPanel" class="panel">
+        <form id="impactForm" class="inline-form">
+          <label>
+            Target type
+            <select id="impactType">
+              <option value="auto">Auto</option>
+              <option value="file">File</option>
+              <option value="symbol">Symbol</option>
+              <option value="route">Route</option>
+              <option value="config">Config</option>
+            </select>
+          </label>
+          <label>
+            Target
+            <input id="impactTarget" value="src/auth.py">
+          </label>
+          <label>
+            Depth
+            <input id="impactDepth" type="number" min="1" max="5" value="3">
+          </label>
+          <button type="submit">Run Impact</button>
+        </form>
+        <div id="impactOutput" class="result-list"></div>
+      </section>
+
+      <section id="scopePanel" class="panel">
+        <form id="scopeForm" class="inline-form">
+          <label>
+            Changed files
+            <input id="scopeFiles" value="src/auth.py">
+          </label>
+          <label class="check">
+            <input id="scopeGit" type="checkbox">
+            Use git diff
+          </label>
+          <button type="submit">Review Scope</button>
+        </form>
+        <div id="scopeOutput" class="result-list"></div>
+      </section>
+
+      <section id="testsPanel" class="panel">
+        <form id="testsForm" class="inline-form">
+          <label>
+            Target
+            <input id="testsTarget" value="verify_token">
+          </label>
+          <label>
+            Files
+            <input id="testsFiles" value="src/auth.py">
+          </label>
+          <button type="submit">Recommend Tests</button>
+        </form>
+        <div id="testsOutput" class="result-list"></div>
+      </section>
+
+      <section id="profilePanel" class="panel">
+        <div class="toolbar">
+          <button id="loadProfileBtn" type="button">Load Profile</button>
+          <button id="saveProfileBtn" type="button">Save Profile</button>
+        </div>
+        <textarea id="profileEditor" spellcheck="false" aria-label="Repository profile JSON"></textarea>
+        <div id="profileOutput" class="result-list"></div>
+      </section>
+
+      <section id="runtimePanel" class="panel">
+        <form id="traceForm" class="inline-form">
+          <label>
+            Event type
+            <input id="traceType" value="api_request">
+          </label>
+          <label>
+            Label
+            <input id="traceLabel" value="Observed API request">
+          </label>
+          <label>
+            File, symbol, route, or endpoint
+            <input id="traceTarget" value="/api/users">
+          </label>
+          <button type="submit">Record Trace</button>
+          <button id="loadTracesBtn" type="button">Load Traces</button>
+        </form>
+        <div id="traceOutput" class="result-list"></div>
+      </section>
+
+      <section id="storagePanel" class="panel">
+        <div class="toolbar">
+          <button id="refreshIfStaleBtn" type="button">Refresh If Stale</button>
+          <button id="exportIndexBtn" type="button">Export Index Archive</button>
+          <button id="exportEncryptedBtn" type="button">Export Encrypted</button>
+          <button id="lockIndexBtn" type="button">Lock Index</button>
+          <button id="unlockIndexBtn" type="button">Unlock Index</button>
+          <button id="deleteIndexBtn" type="button" class="danger-button">Delete Local Index</button>
+        </div>
+        <label>
+          Encryption passphrase
+          <input id="vaultPassphrase" type="password" autocomplete="new-password" value="">
+        </label>
+        <div id="storageOutput" class="result-list"></div>
+      </section>
+
+      <section id="reportPanel" class="panel">
+        <form id="reportForm" class="inline-form">
+          <label>
+            Optional target
+            <input id="reportTarget" value="src/auth.py">
+          </label>
+          <label>
+            Target type
+            <select id="reportType">
+              <option value="auto">Auto</option>
+              <option value="file">File</option>
+              <option value="symbol">Symbol</option>
+              <option value="route">Route</option>
+              <option value="config">Config</option>
+            </select>
+          </label>
+          <button type="submit">Export Markdown</button>
+        </form>
+        <textarea id="reportOutput" readonly aria-label="Markdown report"></textarea>
+      </section>
+
+      <section class="band">
+        <h2>Activity</h2>
+        <pre id="activityLog"></pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+[module]
+name = "test-valid"
+display_name = "Test Valid Module"
+version = "0.1.0"
+description = "A valid fixture for testing."
+
+[capabilities]
+provides = ["testing"]
+requires = []
+
+[nav]
+order = 15
+icon = "flask-conical"
+route = "/test-valid"
+
+[contracts]
+events = "contracts/events.ts"
+commands = "contracts/commands.ts"
+python = "contracts/python.py"
+
+[standalone]
+entrypoint = "backend/src/alos_test/__main__.py"
+frontend_port = 5180

@@ -1,0 +1,58 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+backend/logs/
+
+node_modules
+dist
+dist-ssr
+*.local
+.gitnexus/
+hf-cache/
+
+# Module vendored code — kept in git for review but excluded from linters
+modules/*/_vendor/
+
+# Python build artifacts
+*.egg-info/
+__pycache__/
+*.pyc
+backend/.pytest_cache/
+backend/.venv/
+backend/.env
+backend/alos_memory.db
+backend/atlas/
+backend/current/
+backend/memory/
+backend/build/
+backend/dist/
+backend/data/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# [Hardening] Chamber & QuantAmp Persistence
+.alos/chamber/
+.sessions.json
+modules/chamber/backend/src/alos_chamber/python/_base_venv/
+modules/chamber/backend/src/alos_chamber/python/rexbot_sandbox_*/
+src-tauri/target/
+src-tauri/gen/
+src-tauri/resources/backend/
+Upgrades\ From\ Rex/
+scratch/
+node_modules/
+qa/scout-audits/

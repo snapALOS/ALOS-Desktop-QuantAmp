@@ -1,0 +1,19 @@
+[module]
+name = "atlas"
+display_name = "Atlas"
+version = "0.2.0"
+description = "A live map of your codebase. Agents grounded in facts, not guesses."
+
+[capabilities]
+provides = ["code_graph", "indexing", "semantic_search"]
+requires = []
+
+[nav]
+order = 30
+icon = "database"
+route = "/atlas"
+
+# [contracts]
+# Uncomment when contract files are created during fold-in:
+# events = "contracts/events.ts"
+# commands = "contracts/commands.ts"

@@ -1,0 +1,4 @@
+# Missing required fields — name and nav section are absent
+[module]
+display_name = "Broken Module"
+version = "0.0.1"

@@ -1,0 +1,17 @@
+{
+  "people": [
+    "Title",
+    "Status"
+  ],
+  "projects": [
+    "React",
+    "Tauri",
+    "Dead",
+    "Vite",
+    "Other",
+    "Append",
+    "Module",
+    "Single",
+    "Agent"
+  ]
+}

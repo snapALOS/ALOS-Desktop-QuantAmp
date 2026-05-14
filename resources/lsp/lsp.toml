@@ -1,0 +1,24 @@
+# ALOS LSP Registry
+# This file is generated from the resources template on first run.
+# User overrides in ~/.alos/lsp.toml will take priority.
+
+[[server]]
+id = "pyright"
+languages = ["python"]
+command = ["node", "${alos.resources}/lsp/pyright/langserver.js", "--stdio"]
+root_markers = ["pyproject.toml", "setup.py", "requirements.txt", ".git"]
+enabled = true
+
+[[server]]
+id = "typescript"
+languages = ["typescript", "javascript", "typescriptreact", "javascriptreact"]
+command = ["node", "${alos.resources}/lsp/ts-ls/server.js", "--stdio"]
+root_markers = ["package.json", "tsconfig.json", ".git"]
+enabled = true
+
+[[server]]
+id = "rust-analyzer"
+languages = ["rust"]
+command = ["${alos.resources}/lsp/rust-analyzer"]
+root_markers = ["Cargo.toml"]
+enabled = true

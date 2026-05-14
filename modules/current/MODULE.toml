@@ -1,0 +1,19 @@
+[module]
+name = "current"
+display_name = "Current"
+version = "0.2.0"
+description = "Workflow orchestration for agents, tools, and humans. DAGs that think."
+
+[capabilities]
+provides = ["workflow_orchestration", "dag_execution"]
+requires = ["isolated_execution"]
+
+[nav]
+order = 20
+icon = "workflow"
+route = "/current"
+
+# [contracts]
+# Uncomment when contract files are created during fold-in:
+# events = "contracts/events.ts"
+# commands = "contracts/commands.ts"

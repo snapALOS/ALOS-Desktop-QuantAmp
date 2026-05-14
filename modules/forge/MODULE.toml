@@ -1,0 +1,18 @@
+[module]
+name = "forge"
+display_name = "Forge"
+version = "0.2.0"
+description = "The agentic IDE. Where agents read, write, and run your code."
+
+[capabilities]
+provides = ["code_editing", "ide_shell", "file_operations"]
+requires = ["isolated_execution"]
+
+[nav]
+order = 10
+icon = "code"
+route = "/forge"
+
+[contracts]
+events = "contracts/events.ts"
+commands = "contracts/commands.ts"
